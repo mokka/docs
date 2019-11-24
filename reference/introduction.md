@@ -1,5 +1,5 @@
 # Introduction
-This reference manual describes the Mokka's syntax and semantics. Mokka is still in its design phase; syntax and semantics in this
+This reference manual describes Mokka's syntax and semantics. Mokka is still in its design phase; syntax and semantics in this
 manual might change or be removed without notice. This reference manual tries to be complete and exact.
 
 Semantics of non-essential built-in object types and functions will be described in the to be created Mokka Standard Library.
