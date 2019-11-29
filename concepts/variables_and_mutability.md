@@ -1,7 +1,7 @@
-# Variable bindings and mutability in Mokka
+Variable bindings and mutability in Mokka
+=========================================
 
-Most programs written in Mokka will use variable bindings. It binds a value to a name. This name can be used
-later to get the value bound to it. The type of the variable may be included in the binding, like this:
+Most programs written in Mokka will use variable bindings. It binds a value to a name. This name can be used later to get the value bound to it. The type of the variable may be included in the binding, like this:
 
 ```
 function main();
@@ -17,24 +17,23 @@ function main();
   y := 5 # y: i32
 ```
 
-## Type annotations
+Type annotations
+----------------
 
-Mokka is a statically typed language. The type of a variable must be specified up front and will be checked at compile time. Our
-second example would still compile, since the compiler can easily determine the type of the value being bound.
+Mokka is a statically typed language. The type of a variable must be specified up front and will be checked at compile time. Our second example would still compile, since the compiler can easily determine the type of the value being bound.
 
-The type of a variable in Mokka always comes after a colon (`:`):
+The type of a variable in Mokka always comes after a colon (`:`\):
 
 ```
 foo: i32 = 5
 ```
 
-We have now chosen to represent the variable ```foo``` as a 32-bit signed integer. For the full list of data types in Mokka, please read
-[this article](https://github.com/mokka/docs/blob/master/concepts/data_types.md).
+We have now chosen to represent the variable `foo` as a 32-bit signed integer. For the full list of data types in Mokka, please read [this article](https://github.com/mokka/docs/blob/master/concepts/data_types.md).
 
-## Mutability
+Mutability
+----------
 
-All binding in Mokka are immutable by default (similar to `const` in other languages). A binding can not be reassigned, meaning the
-following code would not compile:
+All binding in Mokka are immutable by default (similar to `const` in other languages). A binding can not be reassigned, meaning the following code would not compile:
 
 ```
 x: bool = false
@@ -66,8 +65,7 @@ fuction main();
   x = true
 ```
 
-Please note that if you re-assign a mutable variable, the new value must be of the same type as the previous value. The following code
-would not compile:
+Please note that if you re-assign a mutable variable, the new value must be of the same type as the previous value. The following code would not compile:
 
 ```
 function main();
@@ -89,9 +87,10 @@ But the re-assigned value is not a string, but a boolean:
 You must assign the new value to a new name.
 ```
 
-# Initializing bindings
-Bindings can be initialized without a value, but the binding can only be used once a value has been assigned to it. Any value that is
-initialized without a value must be a mutable.
+Initializing bindings
+=====================
+
+Bindings can be initialized without a value, but the binding can only be used once a value has been assigned to it. Any value that is initialized without a value must be a mutable.
 
 ```
 function main();
@@ -114,8 +113,7 @@ function main();
     doStuff()
 ```
 
-Although the code above looks valid, it still will not compile. The compiler cannot be sure x is assigned when it gets used and
-will refuse to compile this code. We will fix that by assigning a value to `x` when it is initialized:
+Although the code above looks valid, it still will not compile. The compiler cannot be sure x is assigned when it gets used and will refuse to compile this code. We will fix that by assigning a value to `x` when it is initialized:
 
 ```
 function main();
@@ -130,5 +128,7 @@ function main();
 
 The above code is valid and would compile!
 
-## Scope
+Scope
+-----
+
 > [Please read the article about scopes in Mokka here](https://github.com/mokka/docs/blob/master/concepts/scope.md).

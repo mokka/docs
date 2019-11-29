@@ -1,1 +1,2 @@
-# Naming conventions in Mokka
+Naming conventions in Mokka
+===========================
