@@ -1,0 +1,105 @@
+#!/usr/bin/env python3
+
+import re
+import string
+import subprocess
+import sys
+
+
+def main() -> int:
+    results = []
+
+    git_diff_output = subprocess.check_output([
+        "git", "diff", "--cached", "--name-only", "--diff-filter=A", "-z",
+        "HEAD"
+    ])
+
+    filenames = [b.decode("utf-8") for b in git_diff_output.split(b"\x00")[:-1]]
+
+    for filename in filenames:
+        results.append(filename_validate(filename))
+
+    if sum(results):
+        print()
+        print(f"Blocking commit due to {sum(results)} failed filename checks.")
+
+    return sum(results)
+
+
+def filename_validate(name) -> int:
+    validators = [{
+        "name": "casing",
+        "description": "all characters should be lowercase",
+        "check": filename_check_casing,
+        "suggest": filename_suggest_casing,
+    }, {
+        "name":
+        "separator",
+        "description":
+        "all words should be separated by underscores",
+        "check":
+        filename_check_space_chars,
+        "suggest":
+        filename_suggest_space_chars
+    }]
+
+    violated_validators = []
+    suggestions_to_apply = []
+
+    for validator in validators:
+        validator_name = validator["name"]
+        check = validator["check"]
+        suggest = validator["suggest"]
+
+        if not check(name):
+            violated_validators.append(validator)
+            suggestions_to_apply.append(suggest)
+
+    if violated_validators:
+        suggestion = pipe(suggestions_to_apply)(name)
+        print()
+        print("  INVALID FILENAME")
+        print(f"    currently   {name}")
+        print(f"    suggestion  {suggestion}")
+        print(f"    violates:")
+
+        for v in violated_validators:
+            v_name = v["name"]
+            v_description = v["description"]
+            print(f"      - {v_name} ({v_description})")
+
+    return len(violated_validators)
+
+
+def pipe(functions):
+
+    def piped(x):
+        for f in functions:
+            x = f(x)
+        return x
+
+    return piped
+
+
+def filename_check_casing(name):
+    return name.islower()
+
+
+def filename_suggest_casing(name):
+    # convert to snake case
+    expression = r"([a-z0-9])([A-Z])"
+    substitution = r"\1_\2"
+    return re.sub(expression, substitution, name).lower()
+
+
+def filename_check_space_chars(name):
+    return " " not in name and "-" not in name
+
+
+def filename_suggest_space_chars(name):
+    return name.replace(" ", "_").replace("-", "_")
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+
