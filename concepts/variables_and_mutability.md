@@ -60,7 +60,7 @@ keyword `mutable`, like this: `mutable x: bool = false` or you must assign the n
 If you want a binding to be mutable, you can use the `mutable` keyword, like this:
 
 ```
-fuction main();
+function main();
   mutable x: bool = false
   x = true
 ```
