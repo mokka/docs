@@ -8,13 +8,13 @@ A variable binding at the top of a function is available to that entire function
 ```
 function main();
     x: i32 = 5 
-                    
+    
     if x == 5; 
         y: i32 = 6
     
     # the following line would cause a compilation error,
     # because 'y' is no longer bound here
-
+    
     foo(bar := y)
 ```
 
@@ -23,9 +23,9 @@ If we want to access `y` outside of the `if`-statement, we must bind the variabl
 ```
 function main();
     x: i32 = 5
-            
+    
     mutable y: i32 = 6
-
+    
     if x == 5;
         y += 1
     
@@ -40,6 +40,6 @@ function main();
     x_plus_two := add_two(val := x)
 
     function add_two(val: i32);
-	# x and x_plus_two cannot be accessed here
-	return x + 2
+        # x and x_plus_two cannot be accessed here
+        return x + 2
 ```
