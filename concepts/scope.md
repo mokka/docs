@@ -41,5 +41,5 @@ function main();
 
     function add_two(val: i32);
         # x and x_plus_two cannot be accessed here
-        return x + 2
+        return val + 2
 ```
