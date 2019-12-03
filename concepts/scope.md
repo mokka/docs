@@ -44,7 +44,9 @@ function main() -> i32;
         return val + 2
 ```
 
-## Scope of functions
+Scope of functions
+------------------
+
 A function is only available in the scope it is defined in and the scopes below it:
 
 ```
@@ -61,4 +63,4 @@ function add_one(val: i32) -> i32;
     return val + 1
 ```
 
-In the example above, ```add_one``` is available throughout the file, while ```add_two``` is only available in the scope it is defined in (namely ```main()```'s scope and all the scopes below it.
+In the example above, `add_one` is available throughout the file, while `add_two` is only available in the scope it is defined in (namely `main()`'s scope and all the scopes below it.
