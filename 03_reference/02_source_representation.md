@@ -1,5 +1,11 @@
-Source code representation
-==========================
+Source representation
+=====================
+
+## Source file representation
+
+Mokka source files use the file extension ".mok".
+
+## Source code representation
 
 Mokka source code is Unicode text encoded in UTF-8. The text is not canonicalized. This document will use the unqualified term "character" to refer to a Unicode code point in the source text.
 
