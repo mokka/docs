@@ -1,3 +1,4 @@
-# Source file representation
+Source file representation
+==========================
 
 Mokka source files use the file extension ".mok".
