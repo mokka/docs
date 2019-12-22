@@ -38,7 +38,7 @@ Each datatype is either signed or unsigned and has an explicit size. Signed inte
 A character (`char`) is any Unicode character. The following code shows how to use this datatype:
 
 ```
-function main() -> void;
+function main();
   love: char = '🖤' # Note the single quotes (') as opposed to double quotes.
   write(to := STDOUT, love) # Prints a heart
   
@@ -65,7 +65,7 @@ function main() -> int;
 A `boolean` in Mokka is either `true` or `false` and is one byte long.
 
 ```
-function main() -> void;
+function main();
   if(stars_aligned());
     write(to := STDOUT, "Stars aligned!")
 
@@ -83,7 +83,7 @@ function stars_aligned() -> boolean;
 An array is a collection of values of the same type with a fixed length. In Mokka, and many other programming languages, values going into an array are written as a comma-separated list surrounded by square brackets:
 
 ```
-function main() -> void;
+function main();
   emoticons := ['😀','😁','😎','💜']
 ```
 
@@ -92,7 +92,7 @@ An array is less flexible than a vector; a `vector` has a dynamic length and all
 You can specify a type, like so:
 
 ```
-function main() -> void;
+function main();
   emoticons: char = ['😀','😁','😎','💜']
 ```
 
@@ -102,7 +102,7 @@ The array named `emoticons` will contain four elements of type `char`.
 Elements of an array can be accessed using indexing, like so:
 
 ```
-function main() -> void;
+function main();
   emoticons: char = ['😀','😁','😎','💜']
   
   heart := emoticons[3] # Indexes start at 0
@@ -114,7 +114,7 @@ If you try to access an undefined value in an array (for instance, index `4` in 
 The following code will not compile:
 
 ```
-function main() -> void;
+function main();
   emoticons: char = ['😀','😁','😎','💜']
   index: i8 = 10
   
@@ -137,14 +137,14 @@ index is `3`.
 To make an array mutable, add the keyword `mutable` to the variable binding, like so:
 
 ```
-function main() -> void;
+function main();
   mutable emoticons: char = ['😀','😁','😎','💜']
 ```
 
 Mutable arrays still have a fixed size, but the individual elements can be altered:
 
 ```
-function main() -> void;
+function main();
   mutable emoticons: char = ['😀','😁','😎','💜']
   
   emoticons[3] = '💔'
@@ -153,7 +153,7 @@ function main() -> void;
 Please note that if you re-assign an element, the new value must be of the same type as the previous value. The following code would not compile:
 
 ```
-function main() -> void;
+function main();
   mutable emoticons: char = ['😀','😁','😎','💜']
   
   emoticons[3] = 12
