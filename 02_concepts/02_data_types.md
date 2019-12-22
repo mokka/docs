@@ -80,5 +80,95 @@ function stars_aligned() -> boolean;
 ## Compound datatypes
 
 ### Arrays
-An array is a collection of values of the same type. An array can have a fixed or dynamic size. 
+An array is a collection of values of the same type with a fixed length. In Mokka, and many other programming languages, values going into an array are written as a comma-separated list surrounded by square brackets:
 
+```
+function main() -> void;
+  emoticons := ['😀','😁','😎','💜']
+```
+
+An array is less flexible than a vector; a `vector` has a dynamic length and allows you to add or remove elements from it, while an array has a fixed length and can only be read from.
+
+You can specify a type, like so:
+
+```
+function main() -> void;
+  emoticons: char = ['😀','😁','😎','💜']
+```
+
+The array named `emoticons` will contain four elements of type `char`.
+
+#### Accessing elements
+Elements of an array can be accessed using indexing, like so:
+
+```
+function main() -> void;
+  emoticons: char = ['😀','😁','😎','💜']
+  
+  heart := emoticons[3] # Indexes start at 0
+```
+
+#### Accessing undefined values
+If you try to access an undefined value in an array (for instance, index `4` in the array `emoticons`), you will get a compilation error.
+
+The following code will not compile:
+
+```
+function main() -> void;
+  emoticons: char = ['😀','😁','😎','💜']
+  index: i8 = 10
+  
+  secret_element: char = emoticons[index]
+```
+
+The compiler will produce the following error:
+
+```
+You tried to access index `10` in the array 'emoticons' here:
+
+5 | secret_element: char = emoticons[index]
+                           ^^^^^^^^^^^^^^^^
+                           
+But the array 'emoticons' only has a size of `4`, therefore, its greatest
+index is `3`.
+```
+
+#### Mutable arrays
+To make an array mutable, add the keyword `mutable` to the variable binding, like so:
+
+```
+function main() -> void;
+  mutable emoticons: char = ['😀','😁','😎','💜']
+```
+
+Mutable arrays still have a fixed size, but the individual elements can be altered:
+
+```
+function main() -> void;
+  mutable emoticons: char = ['😀','😁','😎','💜']
+  
+  emoticons[3] = '💔'
+```
+
+Please note that if you re-assign an element, the new value must be of the same type as the previous value. The following code would not compile:
+
+```
+function main() -> void;
+  mutable emoticons: char = ['😀','😁','😎','💜']
+  
+  emoticons[3] = 12
+```
+
+The compiler would give the following error:
+
+```
+I tried to re-assign an element in the following mutable array:
+
+2 | mutable emoticons: char = ['😀','😁','😎','💜']
+
+But the re-assigned value is not a char, but an integer:
+
+3 | emoticons[3] = 12
+
+You must assign the new value to a new name.
+```
