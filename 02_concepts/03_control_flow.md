@@ -25,7 +25,7 @@ function main();
   
   if guess > 5;
     write(to := STDOUT, guess)
-  else
+  else;
     write(to := STDOUT, "Incorrect guess")
 ```
 
@@ -38,7 +38,7 @@ function main();
   
   if guess > 5;
     write(to := STDOUT, guess)
-  else if guess > 4
+  else if guess > 4;
     write(to := STDOUT, "Incorrect guess")
 ```
 
