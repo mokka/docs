@@ -32,7 +32,7 @@ In Mokka, the number of bits that gets allocated for an integer is explicitly gi
 
 Each datatype is either signed or unsigned and has an explicit size. Signed integers reserve the first bit to indicate whether the number is positive or negative; unsigned integers do not reserve this bit, and can not be negative.
 
-> **Integer Overflow**<br/>A fixed number of bits are used to store each integer. Suppose we have a variable of type `i8`, which can hold any integer between -128 and 127. If we then try to assign a value outside of this range to this variable, an integer overflow will occur.<br/><br/>If you try to compile a program where an integer overflow could occur, the compiler will tell you your error and will refuse to compile the program.
+> **Integer Overflow**<br/>A fixed number of bits are used to store each integer. Suppose we have a variable of type `i8`, which can hold any integer between -128 and 127. If we then try to assign a value outside of this range to this variable, an integer overflow will occur.
 
 ### Chars
 A character (`char`) is any Unicode character. The following code shows how to use this datatype:
