@@ -18,7 +18,7 @@ Different type annotations exist for different data types.
 A scalar (or variable) represents a single value. There are four primary scalar types in Mokka, namely: integers, booleans, characters and floating-point numbers.
 
 ### Integers
-Mathematically speaking, an integer is *any* whole number, but computers only have a finite amount of memory, meaning we cannot store arbirarily large numbers. Instead, a fixed number of bits is used to store each integer, ranging from 8 to 128 bits. 
+Mathematically speaking, an integer is *any* whole number, but computers only have a finite amount of memory, meaning we cannot store arbirarily large numbers. Instead, a fixed number of bits are used to store each integer, ranging from 8 to 128 bits. 
 
 In Mokka, the number of bits that gets allocated for an integer is explicitly given. The table below lists the datatypes for storing integers in Mokka.
 
@@ -32,18 +32,53 @@ In Mokka, the number of bits that gets allocated for an integer is explicitly gi
 
 Each datatype is either signed or unsigned and has an explicit size. Signed integers reserve the first bit to indicate whether the number is positive or negative; unsigned integers do not reserve this bit, and can not be negative.
 
+> **Integer Overflow**<br/>A fixed number of bits are used to store each integer. Suppose we have a variable of type `i8`, which can hold any integer between -128 and 127. If we then try to assign a value outside of this range to this variable, an integer overflow will occur.<br/><br/>If you try to compile a program where an integer overflow could occur, the compiler will tell you your error and will refuse to compile the program.
+
 ### Chars
 A character (`char`) is any Unicode character. The following code shows how to use this datatype:
 
-
 ```
-function main();
+function main() -> void;
   love: char = '🖤' # Note the single quotes (') as opposed to double quotes.
   write(to := STDOUT, love) # Prints a heart
   
   from std.io import write, STDOUT
 ```
 
+### Floating-point numbers
+Mokka has two types for floating-point numbers, `f32` and `f64`, which are respectively 32 and 64 bits long.
 
+An example of floating-point numbers in the wild:
 
+```
+function main() -> int;
+  pi: f64 = 3.1415926535
+  earth_radius := 6371
+  earth_circumference: u32 = 2 * pi * earth_radius
+  
+  write(to := STDOUT, earth_circumference) # Prints 40030
+  
+  from std.io import write, STDOUT
+```
+
+### Boolean
+A `boolean` in Mokka is either `true` or `false` and is one byte long.
+
+```
+function main() -> void;
+  if(stars_aligned());
+    write(to := STDOUT, "Stars aligned!")
+
+  from std.io import write, STDOUT
+  
+function stars_aligned() -> boolean;
+  return random_integer(0, 100) == 1
+
+  from std.rand import random_integer
+```
+
+## Compound datatypes
+
+### Arrays
+An array is a collection of values of the same type. An array can have a fixed or dynamic size. 
 
