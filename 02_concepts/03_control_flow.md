@@ -16,6 +16,29 @@ function main();
 
 Since `guess` is greater than `3`, the block is executed and `4` is printed to the console.
 
+
+It is worth noting that the condition being evaluated must be a `boolean`. If it is not a `boolean`, the compiler will give a compilation error.
+
+```
+function main();
+  guess: int = 4
+  
+  if guess;
+    write(to := STDOUT, guess)
+```
+
+Will result in the following compilation error:
+
+```
+I got an `integer` here:
+
+4 | if guess;
+       ^^^^^
+   
+But I expected a `boolean`.
+```
+
+
 ### `else`
 An `else` statement always directly proceeds an `if` statement and gets executed if the condition in the preceeding `if` statement evaluates to `false`.
 
@@ -43,3 +66,6 @@ function main();
 ```
 
 Both expression in the above code block fail, so nothing is printed to the console.
+
+## Iterating through a collection using `for`
+We can iterate through a collection using a `for` loop. 
