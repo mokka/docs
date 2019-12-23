@@ -1,20 +1,20 @@
-Variable bindings and mutability in Mokka
-=========================================
+Bindings in Mokka
+=================
 
-Most programs written in Mokka will use variable bindings. It binds a value to a name. This name can be used later to get the value bound to it. The type of the variable may be included in the binding, like this:
-
-```
-function main();
-    x: bool = false
-    y: string = "Foobar"
-```
-
-The type may also be omitted, like this:
+A binding in Mokka consists of a name and a value. A binding always has a type, which may not change. The type can be explicitly specified when a binding is created, like this:
 
 ```
 function main();
-    x := false  # x is a boolean
-    y := 5  # y is an integer
+	x: boolean = false
+	y: string = "Foobar"
+```
+
+The type may sometimes also be omitted, like this:
+
+```
+function main();
+	x := false  # x is a boolean
+	y := 5  # y is an integer
 ```
 
 Type annotations
@@ -28,19 +28,19 @@ The type of a variable in Mokka always proceeds a colon (`:`\):
 foo: i32 = 5
 ```
 
-We have now chosen to represent the variable `foo` as a 32-bit signed integer. [this article](https://github.com/mokka/docs/blob/master/concepts/data_types.md) describes the full list of data type in more detail.
+We have now chosen to represent the variable `foo` as a 32-bit signed integer. [this article](https://github.com/mokka/docs/blob/master/02_concepts/02_data_types.md) describes all data types.
 
 Mutability
 ----------
 
-All binding in Mokka are immutable by default. This means that the following code does not compile:
+Bindings in Mokka are immutable by default. This means that the following code does not compile:
 
 ```
 x: bool = false
 x = true
 ```
 
-The compiler will be sad and produce the following error:
+The compiler will show the following error:
 
 ```
 The immutable variable `x` is first defined here:
@@ -61,16 +61,16 @@ If you want a binding to be mutable, you can use the `mutable` keyword:
 
 ```
 function main();
-    mutable x: bool = false
-    x = true
+	mutable x: bool = false
+	x = true
 ```
 
 Please note that if you re-assign a mutable variable, the new value must be of the same type as the previous value. The following code would not compile:
 
 ```
 function main();
-    mutable x: string = "Foobar"
-    x = true
+	mutable x: string = "Foobar"
+	x = true
 ```
 
 The compiler would give the following error:
@@ -88,42 +88,42 @@ You must assign the new value to a new name.
 ```
 
 Initializing bindings
-=====================
+---------------------
 
 Bindings can be initialized without a value, but the binding can only be used once a value has been assigned to it. Any value that is initialized without a value must be a mutable.
 
 ```
 function main();
-    mutable x: bool
-    
-    if x;
-        doStuff()
+	mutable x: bool
+	
+	if x;
+		doStuff()
 ```
 
 The above code would not compile, since no value has been assigned to `x`. Let's try assigning a value to `x`:
 
 ```
 function main();
-    mutable x: bool
- 
-    if starsAligned();
-    	x = true
+	mutable x: bool
+	
+	if starsAligned();
+		x = true
    
-    if x;
-        doStuff()
+	if x;
+		doStuff()
 ```
 
 Although the code above looks valid, it still will not compile. The compiler cannot be sure x is assigned when it gets used and will refuse to compile this code. We will fix that by assigning a value to `x` when it is initialized:
 
 ```
 function main();
-    mutable x: bool = false
-  
-    if starsAligned();
-        x = true
-    
-    if x;
-        doStuff()
+	mutable x: bool = false
+	
+	if starsAligned();
+	x = true
+	
+	if x;
+	doStuff()
 ```
 
 The above code is valid and compiles!

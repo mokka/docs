@@ -10,6 +10,6 @@ The Zen of Mokka
 -	Do not allow more than what is absolutely necessary;
 -	If it is hard to explain, it is not a good idea;
 -	A compiler error is better than a compiler warning;
+-	Decisions should be made based upon data;
 -	Readability counts;
--	Decisions should be made, based upon tests;
 -	Readability is more important than writability.

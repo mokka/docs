@@ -7,6 +7,6 @@ Semantics of non-essential built-in object types and functions will be described
 
 This manual tries to be as complete, precise but consice as possible. This document will mostly use natural language rather than formal specification ([formal definitions can be found in the 'spec' repository](https://github.com/mokka/spec/)). This will make the documentation much more readable, but somewhat more ambiguous.
 
-1. [Source representation](https://docs.mokkalang.org/#/03_reference/02_source_representation)
-   1. [Source file representation](https://docs.mokkalang.org/#/03_reference/02_source_representation#source-file-representation)
-   2. [Source code representation](https://docs.mokkalang.org/#/03_reference/02_source_representation#source-code-representation)
+1.	[Source representation](https://docs.mokkalang.org/#/03_reference/02_source_representation)
+	1.	[Source file representation](https://docs.mokkalang.org/#/03_reference/02_source_representation#source-file-representation)
+	2.	[Source code representation](https://docs.mokkalang.org/#/03_reference/02_source_representation#source-code-representation)
